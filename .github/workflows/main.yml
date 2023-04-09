@@ -22,6 +22,12 @@ jobs:
     - name : job1- run ls -la
       run : ls -la
       
+    - name : job1- print test.txt 
+      run : |
+        echo "First-line"
+        echo "Second line"
+        cat test.txt
+      
   job2:
     runs-on: ubuntu-latest
     needs : [job1]
