@@ -1,0 +1,17 @@
+name: First_action
+on: 
+  push: 
+    branches: 
+      - master
+      
+jobs:
+  
+  job1:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name : job1-step1 print hello msg
+      run : echo "Hello world !!!"
+      
+    - name : job1- run ls -la
+      run : ls -la
