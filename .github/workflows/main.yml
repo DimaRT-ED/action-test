@@ -26,8 +26,8 @@ jobs:
       
     - name: ADD num1 + 4 
       run: |
-        MY_SUM=$((10 + MY_NUMBER1))
-        echo "MY_SUM is $MY_SUM"
+        echo "${{ env.MY_NUMBER1 }}" >> ${{ env.MY_SUM }}
+        echo "MY_SUM is ${{ env.MY_SUM }}"
         
     - name: job1- print test.txt 
       run: |
