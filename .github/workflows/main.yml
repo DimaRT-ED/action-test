@@ -21,14 +21,12 @@ jobs:
       
     - name : job1- run ls -la
       run : ls -la
-
-    - name : secret run 
-      run : echo "${{ secrets.sa.SA }}"
       
     - name : job1- print test.txt 
       run : |
         echo "First-line"
         echo "Second line"
+        echo "Second line again"
         cat test.txt
         
     - name : test secretes
@@ -41,9 +39,11 @@ jobs:
         
   job2:
     runs-on: ubuntu-latest
-    needs : [job1]
     
     steps:
+    - name : Print ls -la
+      run : ls -la
+    
     - name : Print hello msg job2
       run : echo "Hello from job2"
       
