@@ -23,11 +23,6 @@ jobs:
       
     - name: job1- run ls -la
       run: ls -la
-      
-    - name: ADD num1 + 4 
-      run: |
-        echo "${{ env.MY_NUMBER1 }}" >> ${{ env.MY_SUM }}
-        echo "MY_SUM is ${{ env.MY_SUM }}"
         
     - name: job1- print test.txt 
       run: |
