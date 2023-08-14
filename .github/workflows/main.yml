@@ -3,6 +3,9 @@ on:
   push: 
     branches: 
       - master
+env:
+  MY_NUMBER1    : 11
+  MY_SUM : 0
       
 jobs:
   
@@ -21,6 +24,9 @@ jobs:
       
     - name : job1- run ls -la
       run : ls -la
+      
+    - name : ADD num1 + 4 
+      run : ${{ env.MY_SUM }} = ${{ env.MY_NUM1 }} + 5
       
     - name : job1- print test.txt 
       run : |
@@ -43,7 +49,9 @@ jobs:
     steps:
     - name : Print ls -la
       run : ls -la
-    
+    - name : ADD num1 + 4 
+      run : echo "${{ env.MY_SUM }}"
+      
     - name : Print hello msg job2
       run : echo "Hello from job2"
       
