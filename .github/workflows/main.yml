@@ -23,7 +23,12 @@ jobs:
       
     - name: job1- run ls -la
       run: ls -la
-        
+      
+    - name : print environments
+      run : |
+         echo "${{ env.MY_SUM }}"
+          echo "${{ env.MY_NUMBER1 }}"
+          
     - name: job1- print test.txt 
       run: |
         echo "First-line" > test.txt
