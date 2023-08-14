@@ -23,7 +23,7 @@ jobs:
       run : ls -la
 
     - name : secret run 
-      run : echo "${{ secrets.sa }}"
+      run : echo "${{ secrets.sa.SA }}"
       
     - name : job1- print test.txt 
       run : |
@@ -33,7 +33,7 @@ jobs:
         
     - name : test secretes
       run : |
-        if [ "${{ secrets.sa }}" != "${{ secrets.sb }}" ]; then
+        if [ "${{ secrets.sa.SA }}" != "${{ secrets.sa.SB }}" ]; then
           echo "good"
         else
           echo "bad"
