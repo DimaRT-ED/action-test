@@ -4,40 +4,41 @@ on:
     branches: 
       - master
 env:
-  MY_NUMBER1    : 11
-  MY_SUM : 0
+  MY_NUMBER1: 11
+  MY_SUM: 0
       
 jobs:
-  
   job1:
     runs-on: ubuntu-latest
     
     steps:
-    - name : Print hello msg job1
-      run : echo "Hello world !!!"
+    - name: Print hello msg job1
+      run: echo "Hello world !!!"
       
-    - name : job1- run ls -la
-      run : ls -la
+    - name: job1- run ls -la
+      run: ls -la
       
-    - name : Clone files
-      uses: actions/checkout@v1
+    - name: Clone files
+      uses: actions/checkout@v2
       
-    - name : job1- run ls -la
-      run : ls -la
+    - name: job1- run ls -la
+      run: ls -la
       
-    - name : ADD num1 + 4 
-      run : ${{ env.MY_SUM }} = 10
-      
-    - name : job1- print test.txt 
-      run : |
-        echo "First-line"
-        echo "Second line"
-        echo "Second line again"
+    - name: ADD num1 + 4 
+      run: |
+        MY_SUM=$((10 + MY_NUMBER1))
+        echo "MY_SUM is $MY_SUM"
+        
+    - name: job1- print test.txt 
+      run: |
+        echo "First-line" > test.txt
+        echo "Second line" >> test.txt
+        echo "Second line again" >> test.txt
         cat test.txt
         
-    - name : test secretes
-      run : |
-        if [ "${{ secrets.sa.SA }}" != "${{ secrets.sa.SB }}" ]; then
+    - name: test secrets
+      run: |
+        if [ "${{ secrets.sa }}" != "${{ secrets.sb }}" ]; then
           echo "good"
         else
           echo "bad"
@@ -48,11 +49,7 @@ jobs:
     needs: [job1]
     
     steps:
-    - name : Print ls -la
-      run : ls -la
-    - name : ADD num1 + 4 
-      run : echo "${{ env.MY_SUM }}"
-      
-    - name : Print hello msg job2
-      run : echo "Hello from job2"
-      
+    - name: Print ls -la
+      run: ls -la
+    - name: Print MY_SUM
+      run: echo "${{ env.MY_SUM }}"
