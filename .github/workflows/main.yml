@@ -21,6 +21,9 @@ jobs:
       
     - name : job1- run ls -la
       run : ls -la
+
+    - name : secret run 
+      run : echo "${{ secrets.sa }}"
       
     - name : job1- print test.txt 
       run : |
